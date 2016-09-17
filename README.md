@@ -18,7 +18,6 @@ In this theme you can add variables to your site config file. The following is t
 	baseurl = "http://rakuishi.com/"
 	languageCode = "ja"
 	title = "rakuishi.com"
-	author = "rakuishi"
 	copyright = "rakuishi All rights reserved."
 	googleanalytics = "UA-12345678-9"
 
@@ -30,6 +29,7 @@ In this theme you can add variables to your site config file. The following is t
 	  gitlab    = "https://gitlab.com/rakuishi/"
 	  email     = "rakuishi@gmail.com"
 	  siteDescription = "A general site description."
+	  siteAuthorName = "rakuishi"
 
 `copyright` may contain safe HTML, such as a link to a license.
 

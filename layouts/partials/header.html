@@ -5,11 +5,11 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 <head>
 <meta charset="utf-8">
-{{ with .Site.Author }}
-  <meta author="{{ . }}">
+{{ with .Site.Params.authorName }}
+  <meta name="author" content="{{ . }}">
 {{ end }}
 {{ with .Site.Params.siteDescription }}
-  <meta description="{{ . }}">
+  <meta name="description" content="{{ . }}">
 {{ end }}
 {{ .Hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
