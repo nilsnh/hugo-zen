@@ -5,6 +5,12 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 <head>
 <meta charset="utf-8">
+{{ with .Site.Author }}
+  <meta author="{{ . }}">
+{{ end }}
+{{ with .Site.Params.siteDescription }}
+  <meta description="{{ . }}">
+{{ end }}
 {{ .Hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="//fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
@@ -21,18 +27,40 @@
 <meta property="og:locale" content="{{ .Site.LanguageCode }}" />
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 {{ if .IsPage }}
-<meta property="og:type" content="article" />
-<meta property="og:description" content="{{ .Summary }}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="{{ .Summary }}" />
+{{ else }}
+  <meta property="og:type" content="website" />
+  {{ with .Site.Params.siteDescription }}
+    <meta property="og:description" content="{{ . }}" />
+  {{ end }}
 {{ end }}
 
 <!-- Twitter card markup  -->
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ .Title }}" />
 {{ with .Site.Params.twittername }}
   <meta name="twitter:site" content="@{{ . }}" />
 {{ end }}
 {{ if .IsPage }}
   <meta name="twitter:description" content="{{ .Summary }}" />
+{{ else }}
+  {{ with .Site.Params.siteDescription }}
+    <meta name="twitter:description" content="{{ . }}" />
+  {{ end }}
+{{ end }}
+
+<!-- Try to find first content image for Facebook and Twitter markup. -->
+{{ if .IsPage }}
+  <!-- Create a list with first image we find in the content -->
+  {{ $imageArray := findRE "<img.+src=\"(\\S*)\".*>" .Content 1}}
+  <!-- Loop through the list of one or zero images. -->
+  {{ range $imageArray }}
+    <!-- Grab the url of the image element -->
+    {{ $firstImageURL := replaceRE "<img.+src=\"(\\S*)\".*>" "$1" . }}
+    <meta property="og:image"  content="{{ $firstImageURL | absURL }}"/>
+    <meta name="twitter:image" content="{{ $firstImageURL | absURL }}"/>
+  {{ end }}
 {{ end }}
 
 </head>

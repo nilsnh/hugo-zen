@@ -29,6 +29,7 @@ In this theme you can add variables to your site config file. The following is t
 	  github    = "https://github.com/rakuishi/"
 	  gitlab    = "https://gitlab.com/rakuishi/"
 	  email     = "rakuishi@gmail.com"
+	  siteDescription = "A general site description."
 
 `copyright` may contain safe HTML, such as a link to a license.
 
