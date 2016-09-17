@@ -1,3 +1,6 @@
+
+{{ $baseurl := .Site.BaseURL }}
+
 <!DOCTYPE html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 <head>
@@ -11,6 +14,27 @@
 <link rel="stylesheet" href="/css/custom.css">
 <link rel="alternate" href="/index.xml" type="application/rss+xml" title="{{ .Site.Title }}">
 <title>{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}</title>
+
+<!-- Facebook OGP markup -->
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:url" content="{{ .URL | absURL }}" />
+<meta property="og:locale" content="{{ .Site.LanguageCode }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+{{ if .IsPage }}
+<meta property="og:type" content="article" />
+<meta property="og:description" content="{{ .Summary }}" />
+{{ end }}
+
+<!-- Twitter card markup  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ .Title }}" />
+{{ with .Site.Params.twittername }}
+  <meta name="twitter:site" content="@{{ . }}" />
+{{ end }}
+{{ if .IsPage }}
+  <meta name="twitter:description" content="{{ .Summary }}" />
+{{ end }}
+
 </head>
 <body>
 

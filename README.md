@@ -24,7 +24,7 @@ In this theme you can add variables to your site config file. The following is t
 
 	[params]
 	  logo      = "/images/logo.jpg"
-	  twitter   = "https://twitter.com/rakuishi07"
+	  twittername   = "rakuishi07"
 	  facebook  = "https://www.facebook.com/ochiishikoichiro"
 	  github    = "https://github.com/rakuishi/"
 	  gitlab    = "https://gitlab.com/rakuishi/"
