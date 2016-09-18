@@ -5,10 +5,10 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 <head>
 <meta charset="utf-8">
-{{ with .Site.Params.authorName }}
+{{ with .Site.Params.author }}
   <meta name="author" content="{{ . }}">
 {{ end }}
-{{ with .Site.Params.siteDescription }}
+{{ with .Site.Params.description }}
   <meta name="description" content="{{ . }}">
 {{ end }}
 {{ .Hugo.Generator }}
@@ -31,7 +31,7 @@
   <meta property="og:description" content="{{ .Summary }}" />
 {{ else }}
   <meta property="og:type" content="website" />
-  {{ with .Site.Params.siteDescription }}
+  {{ with .Site.Params.description }}
     <meta property="og:description" content="{{ . }}" />
   {{ end }}
 {{ end }}
@@ -45,7 +45,7 @@
 {{ if .IsPage }}
   <meta name="twitter:description" content="{{ .Summary }}" />
 {{ else }}
-  {{ with .Site.Params.siteDescription }}
+  {{ with .Site.Params.description }}
     <meta name="twitter:description" content="{{ . }}" />
   {{ end }}
 {{ end }}
