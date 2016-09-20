@@ -27,6 +27,7 @@ In this theme you can add variables to your site config file. The following is t
 	  facebook  = "https://www.facebook.com/ochiishikoichiro"
 	  github    = "https://github.com/rakuishi/"
 	  gitlab    = "https://gitlab.com/rakuishi/"
+	  linkedIn  = "http://linktolinkedinprofile/"
 	  email     = "rakuishi@gmail.com"
 	  siteDescription = "A general site description."
 	  siteAuthorName = "rakuishi"
