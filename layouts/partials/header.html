@@ -50,7 +50,7 @@
   {{ end }}
 {{ end }}
 
-<!-- Try to find first content image for Facebook and Twitter markup. -->
+<!-- Try to find first content image to be used as Facebook and Twitter markup. -->
 {{ if .IsPage }}
   <!-- Create a list with first image we find in the content -->
   {{ $imageArray := findRE "<img.+src=\"(\\S*)\".*>" .Content 1}}
