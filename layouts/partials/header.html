@@ -56,10 +56,21 @@
   {{ $imageArray := findRE "<img.+src=\"(\\S*)\".*>" .Content 1}}
   <!-- Loop through the list of one or zero images. -->
   {{ range $imageArray }}
-    <!-- Grab the url of the image element -->
+    <!-- Grab the url of the image element and add to scratch memory -->
     {{ $firstImageURL := replaceRE "<img.+src=\"(\\S*)\".*>" "$1" . }}
-    <meta property="og:image"  content="{{ $firstImageURL | absURL }}"/>
-    <meta name="twitter:image" content="{{ $firstImageURL | absURL }}"/>
+    {{ $.Scratch.Add "firstImage" $firstImageURL }}
+  {{ end }}
+{{ end }}
+
+<!-- If we found an image in the content create meta tags for it. -->
+{{ if $.Scratch.Get "firstImage" }}
+  <meta property="og:image"  content="{{ $.Scratch.Get "firstImage" | absURL }}"/>
+  <meta name="twitter:image" content="{{ $.Scratch.Get "firstImage" | absURL }}"/>
+{{ else }}
+  <!-- If we didn't find an image to use or we're at the Frontpage. Try to use default banner image. -->
+  {{ with .Site.Params.defaultBanner }}
+    <meta property="og:image"  content="{{ "{{ . }}" | absURL }}"/>
+    <meta name="twitter:image" content="{{ "{{ . }}" | absURL }}"/>
   {{ end }}
 {{ end }}
 

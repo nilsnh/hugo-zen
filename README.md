@@ -31,6 +31,7 @@ In this theme you can add variables to your site config file. The following is t
 	  email     = "rakuishi@gmail.com"
 	  siteDescription = "A general site description."
 	  siteAuthorName = "rakuishi"
+	  defaultBanner = "default_banner_for_facebook_twitter.jpg"
 
 `copyright` may contain safe HTML, such as a link to a license.
 
