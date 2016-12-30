@@ -69,8 +69,8 @@
 {{ else }}
   <!-- If we didn't find an image to use or we're at the Frontpage. Try to use default banner image. -->
   {{ with .Site.Params.defaultBanner }}
-    <meta property="og:image"  content="{{ "{{ . }}" | absURL }}"/>
-    <meta name="twitter:image" content="{{ "{{ . }}" | absURL }}"/>
+    <meta property="og:image"  content="{{ . | absURL }}"/>
+    <meta name="twitter:image" content="{{ . | absURL }}"/>
   {{ end }}
 {{ end }}
 
