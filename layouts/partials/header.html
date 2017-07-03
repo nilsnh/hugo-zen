@@ -38,7 +38,7 @@
 {{ end }}
 
 <!-- Twitter card markup  -->
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{ .Title }}" />
 {{ with .Site.Params.twittername }}
   <meta name="twitter:site" content="@{{ . }}" />
@@ -70,8 +70,10 @@
 {{ else }}
   <!-- If we didn't find an image to use or we're at the Frontpage. Try to use default banner image. -->
   {{ with .Site.Params.defaultBanner }}
-    <meta property="og:image"  content="{{ . | absURL }}"/>
     <meta name="twitter:image" content="{{ . | absURL }}"/>
+    <meta property="og:image"  content="{{ . | absURL }}"/>
+    <meta property="og:width"  content="512"/>
+    <meta property="og:height"  content="512"/>
   {{ end }}
 {{ end }}
 
