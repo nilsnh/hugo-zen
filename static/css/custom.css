@@ -71,6 +71,10 @@ main {
   text-decoration: none;
 }
 
+.entry-title a:hover {
+  text-decoration: underline;
+}
+
 .entry-meta {
   display: inline-block;
   margin-bottom: 2rem;
