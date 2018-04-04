@@ -84,6 +84,11 @@ main {
 
 .footer-link {
   margin: 2rem 0;
+
+}
+
+.footer-link a {
+  padding: 0.2rem;
 }
 
 .hr {
@@ -129,13 +134,13 @@ ul {
   list-style: circle outside;
 }
 
-ul li, 
+ul li,
 ol li {
   margin-left: 2.5rem;
 }
 
 @media (max-width: 700px) {
-  ul li, 
+  ul li,
   ol li {
     margin-left: 1rem;
   }
