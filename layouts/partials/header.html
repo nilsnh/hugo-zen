@@ -81,6 +81,9 @@
 {{ with .Site.Params.indieAuthEndpoint }}
   <link rel="authorization_endpoint" href="{{.}}">
 {{ end }}
+{{ with .Site.Params.indieTokenEndpoint }}
+  <link rel="token_endpoint" href="{{.}}">
+{{ end }}
 </head>
 <body>
 <div class="container">
