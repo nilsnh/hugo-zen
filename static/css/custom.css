@@ -164,7 +164,8 @@ ol li {
 .header-content {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: center;
   max-width: 300px;
   margin: 3rem auto 0 auto;
 }
@@ -173,4 +174,5 @@ ol li {
 .header-content h2 {
   font-size: 1.9rem;
   margin: 0;
+  margin-right: 2rem;
 }
