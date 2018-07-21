@@ -91,17 +91,19 @@
   <header role="banner">
   <div class="header-logo">
   <a class="h-card" href="/"><img class="u-photo" src="{{ .Site.Params.logo }}" width="60" height="60" alt="{{ .Site.Title }}">
-        {{with .Site.Params.author}}<span style="display:none;">{{.}}</span>{{end}}
-        {{with .Site.Params.email}}<span rel="me" class="u-email" style="display:none;">{{.}}</span>{{end}}
-        {{with .Site.Params.description}}<span rel="me" class="u-note" style="display:none;">{{.}}</span>{{end}}
-      </a>
+    {{with .Site.Params.author}}<span style="display:none;">{{.}}</span>{{end}}
+    {{with .Site.Params.email}}<span rel="me" class="u-email" style="display:none;">{{.}}</span>{{end}}
+    {{with .Site.Params.description}}<span rel="me" class="u-note" style="display:none;">{{.}}</span>{{end}}
+  </a>
   </div>
   {{ if eq $isHomePage true }}
     <div class="header-content">
       <h1 class="site-title">{{ .Site.Title }}</h1>
-      <a href="/projects"><h2>projects</h2></a>
-      <a href="/talks"><h2>talks</h2></a>
-      <a href="/about"><h2>about</h2></a>
+      {{ if .Draft }}
+      <h2><a href="/page/projects">projects</a></h2>
+      {{ end }}
+      <h2><a href="/page/talks">talks</a></h2>
+      <h2><a href="/page/about">about</a></h2>
     </div>
   {{ end }}
   </header>

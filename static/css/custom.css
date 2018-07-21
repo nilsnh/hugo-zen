@@ -45,12 +45,21 @@ blockquote {
 
 header,
 footer {
-  margin: 4rem 0;
   text-align: center;
 }
 
+header,
+footer,
 main {
-  margin: 4rem 0;
+  margin: 3rem 0;
+}
+
+@media (min-width: 500px) {
+  header,
+  footer,
+  main {
+    margin: 4rem 0;
+  }
 }
 
 .container {
@@ -165,8 +174,7 @@ ol li {
   display: flex;
   align-items: baseline;
   flex-flow: row wrap;
-  justify-content: center;
-  max-width: 300px;
+  justify-content: space-between;
   margin: 3rem auto 0 auto;
 }
 
@@ -174,5 +182,16 @@ ol li {
 .header-content h2 {
   font-size: 1.9rem;
   margin: 0;
-  margin-right: 2rem;
+}
+
+@media (min-width: 500px) {
+  .header-content {
+    justify-content: center;
+    max-width: 500px;
+    margin: 3rem auto 0 auto;
+  }
+  .header-content h1,
+  .header-content h2 {
+    margin-right: 3rem;
+  }
 }
