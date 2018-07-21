@@ -51,7 +51,7 @@ footer {
 header,
 footer,
 main {
-  margin: 3rem 0;
+  margin: 4rem 0;
 }
 
 @media (min-width: 500px) {
@@ -173,15 +173,15 @@ ol li {
 .header-content {
   display: flex;
   align-items: baseline;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin: 3rem auto 0 auto;
+  flex-flow: row nowrap;
+  margin: 4rem auto 0 auto;
 }
 
 .header-content h1,
 .header-content h2 {
   font-size: 1.9rem;
   margin: 0;
+  margin-right: 3rem;
 }
 
 @media (min-width: 500px) {
