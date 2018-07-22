@@ -1,6 +1,20 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/css/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/css/Roboto/Roboto-Bold.ttf') format('truetype');
+}
+
 body {
-  font-family: 'Roboto', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial,
-    sans-serif;
+  font-family: 'Roboto', fantasy, 'HelveticaNeue', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
   background-color: #fcfcfc;
 }
 
