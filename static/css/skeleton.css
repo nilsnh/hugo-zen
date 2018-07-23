@@ -427,18 +427,22 @@ li {
 
 /* Code
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* code {
-  padding: .2rem .5rem;
-  margin: 0 .2rem;
+/* Only style code withing paragraphs to avoid quarrels with
+   Hugo's pygment highlighting. */
+p > code {
+  padding: 0.2rem 0.5rem;
+  margin: 0 0.2rem;
   font-size: 90%;
   white-space: nowrap;
-  background: #F1F1F1;
-  border: 1px solid #E1E1E1;
-  border-radius: 4px; }
-pre > code {
+  background: #f1f1f1;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+}
+/* pre > code {
   display: block;
   padding: 1rem 1.5rem;
-  white-space: pre; } */
+  white-space: pre;
+} */
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
