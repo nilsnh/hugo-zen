@@ -77,7 +77,7 @@
   <script type="application/ld+json">
   {
   "@context": "http://schema.org",
-  "@type": "BlogPost",
+  "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "{{ .Permalink }}"
@@ -96,9 +96,45 @@
   },
    "publisher": {
     "@type": "Organization",
-    "name": "{{ .Site.Title }}"
+    "name": "{{ .Site.Title }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.Params.logo | absURL }}"
+    }
   },
   "description": "{{ .Summary | plainify }}"
+  }
+  </script>
+{{ end }}
+
+{{ if $isHomePage }}
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "Blog",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "headline": "{{ .Site.Title }}",
+  {{ with .Site.Params.defaultBanner }}
+    "image": [
+      "{{ . | absURL }}"
+     ],
+  {{ end }}
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author }}"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.Params.logo | absURL }}"
+    }
+  },
+  "description": "{{ .Site.Params.description }}"
   }
   </script>
 {{ end }}
