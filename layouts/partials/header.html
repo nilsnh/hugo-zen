@@ -60,20 +60,47 @@
     {{ $firstImageURL := replaceRE "[<img|.|\n]*src=\"(\\S*)\".*>" "$1" . }}
     {{ $.Scratch.Add "firstImage" $firstImageURL }}
   {{ end }}
+  {{ if not ($.Scratch.Get "firstImage") }}
+    {{ $.Scratch.Add "firstImage" .Site.Params.defaultBanner }}
+  {{ end }}
 {{ end }}
 
-<!-- If we found an image in the content create meta tags for it. -->
 {{ if $.Scratch.Get "firstImage" }}
   <meta property="og:image"  content="{{ $.Scratch.Get "firstImage" | absURL }}"/>
   <meta name="twitter:image" content="{{ $.Scratch.Get "firstImage" | absURL }}"/>
-{{ else }}
-  <!-- If we didn't find an image to use or we're at the Frontpage. Try to use default banner image. -->
-  {{ with .Site.Params.defaultBanner }}
-    <meta name="twitter:image" content="{{ . | absURL }}"/>
-    <meta property="og:image"  content="{{ . | absURL }}"/>
-    <meta property="og:image:width"  content="1000"/>
-    <meta property="og:image:height"  content="646"/>
+  <meta property="og:image:width"  content="1000"/>
+  <meta property="og:image:height"  content="646"/>
+{{ end }}
+
+<!-- Add JSON-ld to describe individual pages. -->
+{{ if .IsPage }}
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "BlogPost",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "headline": "{{ .Title }}",
+  {{ with $.Scratch.Get "firstImage" }}
+    "image": [
+      "{{ . | absURL }}"
+     ],
   {{ end }}
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author }}"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}"
+  },
+  "description": "{{ .Summary }}"
+  }
+  </script>
 {{ end }}
 
 {{ with .Site.Params.indieAuthEndpoint }}
