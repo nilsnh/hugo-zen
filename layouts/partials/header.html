@@ -98,7 +98,7 @@
     "@type": "Organization",
     "name": "{{ .Site.Title }}"
   },
-  "description": "{{ .Summary }}"
+  "description": "{{ .Summary | plainify }}"
   }
   </script>
 {{ end }}
