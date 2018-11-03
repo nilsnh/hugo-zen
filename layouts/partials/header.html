@@ -148,12 +148,11 @@
 </head>
 <body>
 <div class="container">
-  <header role="banner">
+  <header role="banner" class="h-card">
   <div class="header-logo">
-  <a class="h-card" href="/"><img class="u-photo" src="{{ .Site.Params.logo }}" width="60" height="60" alt="{{ .Site.Title }}">
+  <a href="/"><img class="u-photo" src="{{ .Site.Params.logo }}" width="60" height="60" alt="{{ .Site.Title }}">
     {{with .Site.Params.author}}<span style="display:none;">{{.}}</span>{{end}}
     {{with .Site.Params.email}}<span rel="me" class="u-email" style="display:none;">{{.}}</span>{{end}}
-    {{with .Site.Params.description}}<span rel="me" class="u-note" style="display:none;">{{.}}</span>{{end}}
   </a>
   </div>
   {{ if eq $isHomePage true }}
@@ -164,7 +163,7 @@
       {{ end }}
       <h2><a href="/page/talks">talks</a></h2>
       <h2><a href="/page/about">about</a></h2>
-      <p class="header-content__description">{{ .Site.Params.description }}</p>
+      {{with .Site.Params.description}}<p class="header-content__description u-note" rel="me">{{.}}</p>{{end}}
     </div>
   {{ end }}
   </header>
