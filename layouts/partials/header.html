@@ -148,7 +148,6 @@
 </head>
 <body>
 <div class="container">
-
   <header role="banner">
   <div class="header-logo">
   <a class="h-card" href="/"><img class="u-photo" src="{{ .Site.Params.logo }}" width="60" height="60" alt="{{ .Site.Title }}">
@@ -159,12 +158,13 @@
   </div>
   {{ if eq $isHomePage true }}
     <div class="header-content">
-      <h1 class="site-title">{{ .Site.Title }}</h1>
+      <h1>{{ .Site.Title }}</h1>
       {{ if .Draft }}
       <h2><a href="/page/projects">projects</a></h2>
       {{ end }}
       <h2><a href="/page/talks">talks</a></h2>
       <h2><a href="/page/about">about</a></h2>
+      <p class="header-content__description">{{ .Site.Params.description }}</p>
     </div>
   {{ end }}
   </header>
