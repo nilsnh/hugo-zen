@@ -6,11 +6,12 @@
 <head>
 <meta charset="utf-8">
 <link rel="icon" type="image/gif" href="/favicon.gif" />
-{{ with .Site.Params.author }}
-  <meta name="author" content="{{ . }}">
-{{ end }}
+<title>{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}</title>
 {{ with .Site.Params.description }}
   <meta name="description" content="{{ . }}">
+{{ end }}
+{{ with .Site.Params.author }}
+  <meta name="author" content="{{ . }}">
 {{ end }}
 {{ .Hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +19,6 @@
 <link rel="stylesheet" href="/css/skeleton.css">
 <link rel="stylesheet" href="/css/custom.css">
 <link rel="alternate" href="/index.xml" type="application/rss+xml" title="{{ .Site.Title }}">
-<title>{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}</title>
 
 <!-- Facebook OGP markup -->
 <meta property="og:title" content="{{ .Title }}" />
@@ -72,88 +72,19 @@
   <meta property="og:image:height"  content="646"/>
 {{ end }}
 
-<!-- Add JSON-ld to describe individual pages. -->
-{{ if .IsPage }}
-  <script type="application/ld+json">
-  {
-  "@context": "http://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ .Permalink }}"
-  },
-  "headline": "{{ .Title }}",
-  {{ with $.Scratch.Get "firstImage" }}
-    "image": [
-      "{{ . | absURL }}"
-     ],
-  {{ end }}
-  "datePublished": "{{ .Date.Format "2006-01-02" }}",
-  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
-  "author": {
-    "@type": "Person",
-    "name": "{{ .Site.Params.author }}"
-  },
-   "publisher": {
-    "@type": "Organization",
-    "name": "{{ .Site.Title }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ .Site.Params.logo | absURL }}"
-    }
-  },
-  "description": "{{ .Summary | plainify }}"
-  }
-  </script>
-{{ end }}
-
-{{ if $isHomePage }}
-  <script type="application/ld+json">
-  {
-  "@context": "http://schema.org",
-  "@type": "Blog",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ .Permalink }}"
-  },
-  "headline": "{{ .Site.Title }}",
-  {{ with .Site.Params.defaultBanner }}
-    "image": [
-      "{{ . | absURL }}"
-     ],
-  {{ end }}
-  "author": {
-    "@type": "Person",
-    "name": "{{ .Site.Params.author }}"
-  },
-   "publisher": {
-    "@type": "Organization",
-    "name": "{{ .Site.Title }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ .Site.Params.logo | absURL }}"
-    }
-  },
-  "description": "{{ .Site.Params.description }}"
-  }
-  </script>
-{{ end }}
-
 {{ with .Site.Params.indieAuthEndpoint }}
   <link rel="authorization_endpoint" href="{{.}}">
 {{ end }}
 {{ with .Site.Params.indieTokenEndpoint }}
   <link rel="token_endpoint" href="{{.}}">
 {{ end }}
+
 </head>
 <body>
 <div>
   <header role="banner" class="container-v2 h-card">
   <div class="header-logo">
-  <a href="/"><img class="u-photo" src="{{ .Site.Params.logo }}" width="60" height="60" alt="{{ .Site.Title }}">
-    {{with .Site.Params.author}}<span class="p-name" style="display:none;">{{.}}</span>{{end}}
-    {{with .Site.Params.email}}<span rel="me" class="u-email" style="display:none;">{{.}}</span>{{end}}
-  </a>
+  <a href="/"><img class="u-photo" src="{{ .Site.Params.logo }}" width="60" height="60" alt="{{ .Site.Title }}"></a>
   </div>
   {{ if eq $isHomePage true }}
     <div class="header-content">
@@ -162,8 +93,10 @@
       <h2><a href="/page/projects">projects</a></h2>
       {{ end }}
       <h2><a href="/page/talks">talks</a></h2>
-      <h2><a href="/page/about">about</a></h2>
+      <h2><a href="/page/about-nils-norman-haukaas">about</a></h2>
       {{with .Site.Params.description}}<p class="header-content__description u-note" rel="me">{{.}}</p>{{end}}
+      {{with .Site.Params.author}}<span class="p-name" style="display:none;">{{.}}</span>{{end}}
+      {{with .Site.Params.email}}<span rel="me" class="u-email" style="display:none;">{{.}}</span>{{end}}
     </div>
   {{ end }}
   </header>
