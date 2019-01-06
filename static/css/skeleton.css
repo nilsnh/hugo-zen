@@ -429,7 +429,8 @@ li {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* Only style code withing paragraphs to avoid quarrels with
    Hugo's pygment highlighting. */
-p > code {
+p > code,
+li > code {
   padding: 0.2rem 0.5rem;
   margin: 0 0.2rem;
   font-size: 90%;
