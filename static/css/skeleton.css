@@ -265,7 +265,7 @@ p {
 a {
   color: blue;
   text-decoration: none;
-  transition: all 0.2s ease-out;
+  transition: all 0.15s ease-out;
   border-bottom: 3px solid transparent;
 }
 a:hover,
