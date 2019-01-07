@@ -73,14 +73,7 @@ footer {
 
 .entry-title {
   margin-bottom: 0;
-}
-
-.entry-title a {
-  text-decoration: none;
-}
-
-.entry-title a:hover {
-  text-decoration: underline;
+  line-height: 1.7;
 }
 
 .entry-meta {
