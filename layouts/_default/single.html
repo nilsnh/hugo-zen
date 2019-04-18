@@ -7,7 +7,7 @@
 				{{ if eq .Type "page" }}
 					{{/* Don't display date for pages */}}
 				{{ else }}
-					<time class="dt-published" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time>
+					{{ partial "post-date.html" . }}
 				{{ end }}
 			</div>
 			<a style="display:none;" class="p-author h-card" href="https://nilsnh.no">Nils Norman Haukås</a>
