@@ -181,6 +181,22 @@ ol li {
   height: auto;
 }
 
+.post-meta-categories a {
+  color: #888;
+}
+
+.post-meta-categories a:hover {
+  color: blue;
+}
+
+.post-meta-categories > *::after {
+  content: ",";
+}
+
+.post-meta-categories > *:last-child::after {
+  content: "";
+}
+
 @media (max-width: 600px) {
   .highlight {
     margin-left: -2rem;

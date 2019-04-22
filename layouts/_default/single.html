@@ -7,7 +7,7 @@
 				{{ if eq .Type "page" }}
 					{{/* Don't display date for pages */}}
 				{{ else }}
-					{{ partial "post-date.html" . }}
+					{{ partial "post-meta.html" . }}
 				{{ end }}
 			</div>
 			<a style="display:none;" class="p-author h-card" href="https://nilsnh.no">Nils Norman Haukås</a>
