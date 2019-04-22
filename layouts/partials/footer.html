@@ -37,7 +37,8 @@
 	try {
 		const players = new Plyr('.js-player', {
 			quality: { default: 360 },
-			iconUrl: '/plyr-3.5.3/dist/plyr.svg'
+			iconUrl: '/plyr-3.5.3/dist/plyr.svg',
+			blankVideo: '/plyr-3.5.3/dist/blank.mp4'
 		});
 	} catch (err) {
 		console.error('Failed to load plyr video player')
