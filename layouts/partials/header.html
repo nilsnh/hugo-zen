@@ -38,7 +38,6 @@
 {{ end }}
 
 <!-- Twitter card markup  -->
-<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{ .Title }}" />
 {{ with .Site.Params.twittername }}
   <meta name="twitter:site" content="@{{ . }}" />
@@ -54,11 +53,11 @@
 <!-- Try to find first content image to be used as Facebook and Twitter markup. -->
 {{ if .IsPage }}
   <!-- Create a list with first image we find in the content -->
-  {{ $imageArray := findRE "[<img|.|\n]*src=\"(\\S*)\".*>" .Content 1}}
+  {{ $imageArray := findRE "data-featurable-image=\"(\\S*)\"" .Content 1 }}
   <!-- Loop through the list of one or zero images. -->
   {{ range $imageArray }}
     <!-- Grab the url of the image element and add to scratch memory -->
-    {{ $firstImageURL := replaceRE "[<img|.|\n]*src=\"(\\S*)\".*>" "$1" . }}
+    {{ $firstImageURL := replaceRE "data-featurable-image=\"(\\S*)\"" "$1" . }}
     {{ $.Scratch.Add "firstImage" $firstImageURL }}
   {{ end }}
   {{ if not ($.Scratch.Get "firstImage") }}
@@ -66,12 +65,17 @@
   {{ end }}
 {{ end }}
 
-{{ if $.Scratch.Get "firstImage" }}
-  <meta property="og:image"  content="{{ $.Scratch.Get "firstImage" | absURL }}"/>
-  <meta name="twitter:image" content="{{ $.Scratch.Get "firstImage" | absURL }}"/>
-  <meta property="og:image:width"  content="1000"/>
-  <meta property="og:image:height"  content="646"/>
+{{ with $.Scratch.Get "firstImage" }}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image"  content="{{ . | absURL }}"/>
+  <meta name="twitter:image" content="{{ . | absURL }}"/>
+{{ else }}
+  <meta name="twitter:card" content="summary">
+  <meta property="og:image"  content="{{ .Site.Params.defaultBanner | absURL }}"/>
+  <meta name="twitter:image" content="{{ .Site.Params.defaultBanner | absURL }}"/>
 {{ end }}
+<meta property="og:image:width"  content="1000"/>
+<meta property="og:image:height"  content="646"/>
 
 {{ with .Site.Params.indieAuthEndpoint }}
   <link rel="authorization_endpoint" href="{{.}}">

@@ -29,14 +29,15 @@
 	ga('send', 'pageview');
 </script>{{ end }}
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script src="/highlight.8.4.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script src="/plyr-3.5.3/dist/plyr.min.js"></script>
 <script type="text/javascript">
 	try {
 		const players = new Plyr('.js-player', {
-			quality: { default: 360, options: [360, 720, 1080] }
+			quality: { default: 360, options: [360, 720, 1080] },
+			iconUrl: '/plyr-3.5.3/dist/plyr.svg'
 		});
 	} catch (err) {
 		console.error('Failed to load plyr video player')
