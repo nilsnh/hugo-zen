@@ -197,7 +197,23 @@ ol li {
   content: "";
 }
 
+.c-boxed-content {
+  border: 1px solid #888;
+  box-shadow: 10px 5px 5px #888;
+  padding-left: 10px;
+}
+
+.c-boxed-content .highlight {
+  overflow: scroll;
+  margin-bottom: 0;
+}
+
 @media (max-width: 600px) {
+  .c-boxed-content {
+    border-color: transparent;
+    box-shadow: none;
+    padding-left: 0;
+  }
   .highlight {
     margin-left: -2rem;
     margin-right: -2rem;
