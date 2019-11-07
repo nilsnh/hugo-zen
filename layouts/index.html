@@ -1,7 +1,7 @@
 {{ partial "header.html" . }}
 
 	<main role="main">
-		{{ range where .Pages "Section" "post" }}
+		{{ range .Site.RegularPages }}
 		<article class="container-v2 h-entry">
 			<h2 class="entry-title p-name"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
 			<div class="entry-meta">
